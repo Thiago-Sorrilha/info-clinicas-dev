@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: info-clinicas-dev-ingress #nome do ingress
-  namespace: info-clinicas
+  namespace: info-clinicas-dev
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
