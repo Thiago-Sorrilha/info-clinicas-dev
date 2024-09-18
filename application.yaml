@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: info-clinica-dev
+  namespace: argocd
+spec:
+  project: default
+   
+  source:
+    repoURL: https://github.com/Thiago-Sorrilha/web_color.git
+    targetRevision: HEAD
+    path: info-clinicas-dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: info-clinicas-dev
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true # mantem o que esta no repo. subscreve qualquer alteracao
+      prune: true
