@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infoclinicas-dev
+spec:
+  replicas:  1
+  selector: 
+    matchLabels:
+      app: info-clinicas-dev
+  template:
+    metadata:
+      labels:
+        app: info-clinicas-dev
+    spec:
+      containers:
+      - name: site
+        image: tpbsdocker/info-clinicas-dev:latest
+        ports:
+        - containerPort: 80

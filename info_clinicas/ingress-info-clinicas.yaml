@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: info-clinicas-dev-ingress #nome do ingress
+  namespace: info-clinicas
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host:  info-clinicas-dev.net #endereço do host alvo
+    http:
+      paths:
+       - path: "/"
+         pathType: Prefix
+         backend:
+          service:
+            name: info-clinicas-dev
+            port:
+              number: 80
